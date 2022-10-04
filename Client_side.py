@@ -1,17 +1,28 @@
 import socket
-import sys
 
-HOST, PORT = "localhost", 9999
-data = " ".join(sys.argv[1:])
+HEADER = 64
+PORT = 5050
+FORMAT = 'utf-8'
+DISCONNECT_MESSAGE = "!DISCONNECT"
+SERVER = "192.168.1.26"
+ADDR = (SERVER, PORT)
 
-# Create a socket (SOCK_STREAM means a TCP socket)
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-    # Connect to server and send data
-    sock.connect((HOST, PORT))
-    sock.sendall(bytes(data + "\n", "utf-8"))
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(ADDR)
 
-    # Receive data from the server and shut down
-    received = str(sock.recv(1024), "utf-8")
+def send(msg):
+    message = msg.encode(FORMAT)
+    msg_length = len(message)
+    send_length = str(msg_length).encode(FORMAT)
+    send_length += b' ' * (HEADER - len(send_length))
+    client.send(send_length)
+    client.send(message)
+    print(client.recv(2048).decode(FORMAT))
 
-print("Sent:     {}".format(data))
-print("Received: {}".format(received))
+send("Hello World!")
+input()
+send("Hello Everyone!")
+input()
+send("Hello Tim!")
+
+send(DISCONNECT_MESSAGE)

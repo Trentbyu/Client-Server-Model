@@ -1,27 +1,43 @@
-import socketserver
+import socket 
+import threading
 
-class MyTCPHandler(socketserver.BaseRequestHandler):
-    """
-    The request handler class for our server.
+HEADER = 64
+PORT = 5050
+SERVER = socket.gethostbyname(socket.gethostname())
+ADDR = (SERVER, PORT)
+FORMAT = 'utf-8'
+DISCONNECT_MESSAGE = "!DISCONNECT"
 
-    It is instantiated once per connection to the server, and must
-    override the handle() method to implement communication to the
-    client.
-    """
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(ADDR)
 
-    def handle(self):
-        # self.request is the TCP socket connected to the client
-        self.data = self.request.recv(1024).strip()
-        print("{} wrote:".format(self.client_address[0]))
-        print(self.data)
-        # just send back the same data, but upper-cased
-        self.request.sendall(self.data.upper())
+def handle_client(conn, addr):
+    print(f"[NEW CONNECTION] {addr} connected.")
 
-if __name__ == "__main__":
-    HOST, PORT = "localhost", 9999
+    connected = True
+    while connected:
+        msg_length = conn.recv(HEADER).decode(FORMAT)
+        if msg_length:
+            msg_length = int(msg_length)
+            msg = conn.recv(msg_length).decode(FORMAT)
+            if msg == DISCONNECT_MESSAGE:
+                connected = False
 
-    # Create the server, binding to localhost on port 9999
-    with socketserver.TCPServer((HOST, PORT), MyTCPHandler) as server:
-        # Activate the server; this will keep running until you
-        # interrupt the program with Ctrl-C
-        server.serve_forever()
+            print(f"[{addr}] {msg}")
+            conn.send("Msg received".encode(FORMAT))
+
+    conn.close()
+        
+
+def start():
+    server.listen()
+    print(f"[LISTENING] Server is listening on {SERVER}")
+    while True:
+        conn, addr = server.accept()
+        thread = threading.Thread(target=handle_client, args=(conn, addr))
+        thread.start()
+        print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
+
+
+print("[STARTING] server is starting...")
+start()
