@@ -20,6 +20,7 @@ def send(msg):
     print(client.recv(2048).decode(FORMAT))
 
 
+
 msg = " " 
 while msg != "Q":
     msg = input("Enter your message here: ")
