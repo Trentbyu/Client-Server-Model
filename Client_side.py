@@ -1,10 +1,10 @@
 import socket
-
+import time
 HEADER = 64
 PORT = 5051
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.0.181"
+SERVER = "192.168.0.214"
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,10 +19,12 @@ def send(msg):
     client.send(message)
     print(client.recv(2048).decode(FORMAT))
 
-send("Hello ")
-input()
-send("Hello ")
-input()
-send("Hello ")
+
+msg = " " 
+while msg != "Q":
+    msg = input("Enter your message here: ")
+    input()
+    send(msg)
+    time.sleep(0.1)
 
 send(DISCONNECT_MESSAGE)
