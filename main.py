@@ -2,7 +2,7 @@ import socket
 import threading
 
 HEADER = 64
-PORT = 5051
+PORT = 5050
 SERVER = "192.168.0.181"
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
@@ -15,6 +15,7 @@ def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
 
     connected = True
+
     while connected:
         msg_length = conn.recv(HEADER).decode(FORMAT)
         if msg_length:
