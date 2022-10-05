@@ -1,10 +1,10 @@
 import socket
 import time
-HEADER = 32
-PORT = 5005
+HEADER = 64
+PORT = 5003
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.0.214"
+SERVER = "10.15.39.218"
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -22,9 +22,9 @@ def send(msg):
 
 
 msg = " " 
-while msg != "Q":
-    msg = input("Enter your message here: ")
-    input()
+while msg.upper() != "Q":
+    msg = input(f"""press enter to update messages
+    Type a message here: """)
     send(msg)
     time.sleep(0.1)
 
