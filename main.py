@@ -1,15 +1,17 @@
 import socket 
 import threading
 
-HEADER = 64
-PORT = 5051
-SERVER = "192.168.0.181"
+HEADER = 32
+PORT = 5005
+SERVER = "192.168.0.214"
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
+
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
+
 
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
