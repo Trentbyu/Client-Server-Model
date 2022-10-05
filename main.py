@@ -1,9 +1,9 @@
 import socket 
 import threading
 
-HEADER = 32
-PORT = 5005
-SERVER = "192.168.0.214"
+HEADER = 64
+PORT = 5050
+SERVER = "192.168.0.181"
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
@@ -17,6 +17,7 @@ def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
 
     connected = True
+
     while connected:
         msg_length = conn.recv(HEADER).decode(FORMAT)
         if msg_length:
