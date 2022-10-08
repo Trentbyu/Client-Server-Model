@@ -1,10 +1,15 @@
 import socket
 import time
+
+import PySimpleGUI as sg
+
+
+
 HEADER = 64
-PORT = 5003
+PORT = 5002
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "10.15.39.218"
+SERVER = "192.168.0.214"
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -21,11 +26,24 @@ def send(msg):
 
 
 
-msg = " " 
-while msg.upper() != "Q":
-    msg = input(f"""press enter to update messages
-    Type a message here: """)
-    send(msg)
-    time.sleep(0.1)
 
+layout = [[sg.Text("What's your name?")],
+          [sg.Input(key='-INPUT-')],
+          [sg.Text(size=(40,1), key='-OUTPUT-')],
+          [sg.Button('Ok'), sg.Button('Quit')]]
+
+# Create the window
+window = sg.Window('Window Title', layout)
+
+# Display and interact with the Window using an Event Loop
+while True:
+    event, values = window.read()
+    # See if user wants to quit or window was closed
+    if event == sg.WINDOW_CLOSED or event == 'Quit':
+        break
+    # Output a message to the window
+    window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
+
+# Finish up by removing from the screen
+window.close()
 send(DISCONNECT_MESSAGE)
