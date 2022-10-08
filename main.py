@@ -2,8 +2,8 @@ import socket
 import threading
 
 HEADER = 64
-PORT = 5003
-SERVER = "10.15.39.218"
+PORT = 5002
+SERVER = "192.168.0.214"
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
@@ -29,7 +29,7 @@ def handle_client(conn, addr):
             if msg == DISCONNECT_MESSAGE:
                 connected = False
             elif msg == "":
-                show = " "
+                show = "\n"
                 for i in msg_list:
                     show += str(i) + "\n"
                 conn.send(show.encode(FORMAT))
@@ -37,7 +37,7 @@ def handle_client(conn, addr):
                 print(f"[{addr}] {msg}")
                 msg_dic[addr] = msg
                 msg_list.append([addr , msg])
-                conn.send("Msg received".encode(FORMAT))
+        conn.send("Msg received".encode(FORMAT))
 
             
     conn.close()
