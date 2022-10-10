@@ -31,6 +31,6 @@ I used python langauge to write this code. The modules i used were pysimplegui, 
 # Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Add instent refresh for the clinet 
+* Be able to send pickled information with the pickle module 
+* Have more functions than just messages
