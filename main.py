@@ -1,6 +1,7 @@
 import socket 
 import threading
-import time
+import PySimpleGUI as sg
+
 HEADER = 64 # how many bytes are accepted 
 PORT = 5003 # port number 
 SERVER = "192.168.0.214" # what sever to start the connection on 
