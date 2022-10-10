@@ -1,10 +1,13 @@
-import sys, select
+import time 
 
-print("You have ten seconds to answer!")
+start_time = time.time()
+seconds = 2
 
-i, o, e = select.select( [sys.stdin], [], [], 10 )
+while True:
+    current_time = time.time()
+    elapsed_time = current_time - start_time
 
-if (i):
-  print ("You said", sys.stdin.readline().strip())
-else:
-  print ("You said nothing!")
+    if elapsed_time > seconds:
+        print("Finished iterating in: " + str(int(elapsed_time))  + " seconds")
+        start_time = time.time()
+        
