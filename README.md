@@ -11,7 +11,7 @@ This program was written to show a model for the client based system. This softw
 # Network Communication
 
 {Describe the architecture that you used (client/server or peer-to-peer)}
-
+Client-server is a relationship in which one program (the client) requests a service or resource from another program (the server)
 {Identify if you are using TCP or UDP and what port numbers are used.}
 
 {Identify the format of messages being sent between the client and server or the messages sent between two peers.}
