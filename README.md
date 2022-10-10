@@ -12,16 +12,15 @@ This program was written to show a model for the client based system. This softw
 
 
 Client-server is a relationship in which one program (the client) requests a service or resource from another program (the server)
-
+<br>
 This sever uses UDP and data and be sent or recived when ever. The port number is 5003 altough it can be 5000 - 50005 and other ones as well altiough those are what i used.
-{Identify the format of messages being sent between the client and server or the messages sent between two peers.}
+<br>
 The format for messages are that the cline can send any things to the sever and it be displayed to the sever. The sever can then send the messages back the clients so they can see and reply to the messages.
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
 The tools i used to devolop this software was VS code
-{Describe the programming language that you used and any libraries.}
+<br>
 I used python langauge to write this code. The modules i used were pysimplegui, sockets, and threading.
 # Useful Websites
 
