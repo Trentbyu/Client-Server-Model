@@ -1,29 +1,27 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
-
-{Provide a description the networking program that you wrote. Describe how to use your software.  If you did Client/Server, then you will need to describe how to start both.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (you will need to show two pieces of software running and communicating with each other) and a walkthrough of the code.}
-
+In this softwarre i show how to prefrom a clinet based server.To opreate the client based server you will need either the ip address or the local ip address for you computer on your networl. This has to be the same on the client and the sever for them to be able to connect to each other. This can be done by changing the code for the SERVER varible at the start of both the cleint and the server code file. 
+<br>
+<br>
+This program was written to show a model for the client based system. This software thaught me more about threads and how a server can use threads to handle more than one clinet at a time. I was able to model this in python and get a better understanding of networking. 
+<br>
+<br>
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Network Communication
 
-{Describe the architecture that you used (client/server or peer-to-peer)}
 
-{Identify if you are using TCP or UDP and what port numbers are used.}
-
-{Identify the format of messages being sent between the client and server or the messages sent between two peers.}
+Client-server is a relationship in which one program (the client) requests a service or resource from another program (the server)
+<br>
+This sever uses UDP and data and be sent or recived when ever. The port number is 5003 altough it can be 5000 - 50005 and other ones as well altiough those are what i used.
+<br>
+The format for messages are that the cline can send any things to the sever and it be displayed to the sever. The sever can then send the messages back the clients so they can see and reply to the messages.
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
-
+The tools i used to devolop this software was VS code
+<br>
+I used python langauge to write this code. The modules i used were pysimplegui, sockets, and threading.
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
