@@ -25,8 +25,8 @@ I used python langauge to write this code. The modules i used were pysimplegui, 
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [docs.python.org](https://docs.python.org/3/library/socket.html)
+* [geeks for geeks]([http://url.link.goes.here](https://www.geeksforgeeks.org/socket-programming-python/))
 
 # Future Work
 
