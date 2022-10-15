@@ -3,9 +3,9 @@ import PySimpleGUI as sg
 import time
 HEADER = 64 # how many bytes 
 PORT = 5003 # port number 
-FORMAT = 'utf-8' # encoeer and decoder 
+FORMAT = 'utf-8' # encoder and decoder 
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.0.214" # The sever to connect to
+SERVER = "192.168.0.181" # The sever to connect to
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -23,7 +23,7 @@ def send(msg): # function to send a message
 
 
 l = [" "] 
-# this is what you see on the rigt side of the porgram
+# this is what you see on the right side of the program
 element1 =  [sg.Text("Enter here", size=(20,10))],[sg.Input(key='-INPUT-')], [sg.Button('send', key="-SEND-"),sg.Button('Quit')] , [ sg.Button("Refresh", key='-REFRESH-') ]
 
 # this is what you see on the right side of the program
@@ -43,7 +43,7 @@ layout = [
 ]
 
 # Create the window
-window = sg.Window('MESSAGER', layout)
+window = sg.Window('MESSAGES', layout)
 
 # Display and interact with the Window using an Event Loop
 
@@ -58,7 +58,7 @@ while True:
     if event == "-SEND-":
         send(str(values['-INPUT-']))
 
-    sever = client.recv(4096).decode(FORMAT) # varible to hold sever info coming in 
+    sever = client.recv(4096).decode(FORMAT) # variable to hold sever info coming in 
     
     if sever != l[-1]:
         # only adds to the list if and only if it is not the same thing that was just sent. 
