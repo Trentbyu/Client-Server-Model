@@ -6,7 +6,7 @@ In this softwarre i show how to prefrom a clinet based server.To opreate the cli
 This program was written to show a model for the client based system. This software thaught me more about threads and how a server can use threads to handle more than one clinet at a time. I was able to model this in python and get a better understanding of networking. 
 <br>
 <br>
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/MHlSYVi4vww)
 
 # Network Communication
 
